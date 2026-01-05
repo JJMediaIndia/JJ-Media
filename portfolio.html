@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJ Media | Company Profile & Legacy</title>
+    <meta name="description" content="Explore the legacy of JJ Media, established in 2004. A pioneer in film distribution, ad films, and high-end post-production.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+            color: transparent;
+            transition: all 0.5s ease;
+        }
+        .group:hover .text-outline {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #888888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .portfolio-item {
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 0;
+        }
+        .portfolio-item:hover {
+            color: white;
+            padding-left: 8px;
+        }
+        .portfolio-item::before {
+            content: '→';
+            position: absolute;
+            left: -15px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .portfolio-item:hover::before {
+            left: -12px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+        <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3">
+                    <img src="img/poster.png" alt="JJ Media Logo" style="scale: auto" class="w-10 h-10 object-contain rounded">
+                    <span class="font-bold text-xl tracking-widest text-blue-500">JJ MEDIA</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-white border-b-2 border-white px-3 py-2 text-sm font-medium hover:text-blue-500 transition-transform transform hover:scale-[1.02]">Home</a>
+                        
+                        <!-- Services Dropdown Container -->
+                        <div class="relative group">
+                            <a href="services.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium flex items-center gap-1  transition-transform transform hover:scale-[1.02]">
+                                Services 
+                                <i data-lucide="chevron-down" class="w-3 h-3 group-hover:rotate-180 transition-transform duration-300"></i>
+                            </a>
+                           <!-- Dropdown Menu -->
+                            <div class="absolute left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible dropdown-menu -translate-y-2 group-hover:translate-y-0">
+                                <div class="bg-[#0f0f0f] border border-white/10 rounded-lg shadow-2xl overflow-hidden">
+                                    <a href="services.html#di" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-blue-500 border-b border-white/5 transition-colors">DI (Digital Intermediate)</a>
+                                    <a href="services.html#editing" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-blue-500 border-b border-white/5 transition-colors">Editing</a>
+                                    <a href="services.html#sound" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-blue-500 border-b border-white/5 transition-colors">Sound Design</a>
+                                    <a href="services.html#dubbing" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-blue-500 border-b border-white/5 transition-colors">Dubbing</a>
+                                    <a href="services.html#restoration" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-blue-500 border-b border-white/5 transition-colors">Film Restoration</a>
+                                    <a href="services.html#vfx" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-blue-500 transition-colors">VFX &amp; CGI</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="portfolio.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium transition-transform transform hover:scale-[1.02]">Portfolio</a>
+                        <a href="work.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium transition-transform transform hover:scale-[1.02]">Work</a>
+                        <a href="about.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium transition-transform transform hover:scale-[1.02]">About</a>
+                        <a href="contact.html" class="bg-white text-blue-500 px-6 py-2 rounded-full text-sm font-bold hover:text-white transition-colors hover:bg-blue-500 transition-transform transform hover:scale-[1.02]">Contact Us</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white hover:text-gray-300 focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="md:hidden hidden bg-black border-t border-gray-800 absolute w-full h-screen overflow-y-auto pb-20">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.htm" class="block px-3 py-4 text-xl font-medium border-b border-gray-800 hover:bg-gray-900">Home</a>
+                <div class="px-3 py-4 border-b border-gray-800">
+                    <span class="block text-xl font-medium text-gray-500 mb-2">Services</span>
+                    <div class="pl-4 space-y-3">
+                        <a href="services.html#di" class="block text-gray-300 hover:text-white">DI</a>
+                        <a href="services.html#editing" class="block text-gray-300 hover:text-white">Editing</a>
+                        <a href="services.html#sound" class="block text-gray-300 hover:text-white">Sound</a>
+                        <a href="services.html#dubbing" class="block text-gray-300 hover:text-white">Dubbing</a>
+                        <a href="services.html#restoration" class="block text-gray-300 hover:text-white">Restoration</a>
+                        <a href="services.html#vfx" class="block text-gray-300 hover:text-white">VFX</a>
+                    </div>
+                </div>
+                <a href="work.html" class="block px-3 py-4 text-xl font-medium border-b border-gray-800 hover:bg-gray-900">Work</a>
+                <a href="about.html" class="block px-3 py-4 text-xl font-medium border-b border-gray-800 hover:bg-gray-900">About</a>
+                <a href="contact.html" class="block px-3 py-4 text-xl font-medium bg-white text-black mt-4 text-center rounded">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[60vh] flex items-center justify-center pt-20">
+        <div class="hero-glow"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <span class="text-xs font-bold tracking-[0.5em] text-gray-500 uppercase mb-6 block animate-pulse">Established 2004</span>
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-8 leading-none">
+                OUR <span class="serif italic " style="background: linear-gradient(270deg,#2563eb,#3b82f6,#60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;"> Legacy</span> <br>
+                & VISION
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed italic">
+                "Defining cinematic excellence for over a decade in the heart of India's media landscape."
+            </p>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-4xl font-bold">A Decade of <br><span class="serif italic text-3xl text-blue-500">Innovation & Growth</span></h2>
+                    <div class="h-1 w-20 bg-white transition-all duration-500 hover:w-32"></div>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        Established in the year 2004, JJ Media has been successful in the industry for the past ten years. We are pioneers in film distribution, ad films, event management, and broadcasting networks. 
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Our journey has seen us optimally satisfying clients through creative tools and innovative approaches. From our Hi-Fi studios in Chennai, we provide world-class dubbing and editing solutions for Tamil, Telugu, Malayalam, and Hindi cinema.
+                    </p>
+                    <div class="glass-card group/founder p-6 rounded-2xl border border-white/10 flex items-center gap-6 cursor-default">
+                        <div class="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 group-hover/founder:bg-blue-500 group-hover/founder:text-black transition-colors duration-300">
+                            <i data-lucide="user" class="transition-transform duration-300 group-hover/founder:scale-110 "></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl transition-colors hover:text-blue-500">JEEVIKA YAZHINI</h4>
+                            <p class="text-sm text-gray-500">Founder</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div class="glass-card group/stat aspect-square rounded-2xl bg-gradient-to-t from-gray-800 to-transparent hover:from-gray-700 transition-all duration-500 p-8 flex flex-col justify-center text-center">
+                            <h3 class="text-4xl text-blue-500 font-bold mb-2 group-hover/stat:scale-110 transition-transform duration-300">18+</h3>
+                            <p class="text-xs text-gray-500 uppercase tracking-widest">Years Experience</p>
+                        </div>
+                        <div class="glass-card aspect-[4/5] rounded-2xl p-8 flex flex-col justify-center text-center  bg-gradient-to-b from-gray-800 to-transparent hover:from-gray-700 transition-all duration-500">
+                            <h3 class="text-4xl text-blue-500 font-bold mb-2 group-hover/stat:scale-110 transition-transform duration-300">50+</h3>
+                            <p class="text-xs text-gray-500 uppercase tracking-widest">ADS</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 mt-8">
+                        <div class="glass-card aspect-[4/5] rounded-2xl p-8 flex flex-col justify-center text-center bg-gradient-to-t from-gray-800 to-transparent hover:from-gray-700 transition-all duration-500">
+                           <h3 class="text-4xl text-blue-500 font-bold mb-2 group-hover/stat:scale-110 transition-transform duration-300">100+</h3>
+                            <p class="text-xs text-gray-500 uppercase tracking-widest">MOVIES</p>
+                            </div>
+                        <div class="glass-card group/stat aspect-square rounded-2xl p-8 flex flex-col justify-center text-center bg-gradient-to-b from-gray-800 to-transparent hover:from-gray-700 transition-all duration-500">
+                            <h3 class="text-4xl text-blue-500 font-bold mb-2 group-hover/stat:scale-110 transition-transform duration-300">6</h3>
+                            <p class="text-xs text-gray-500 uppercase tracking-widest">TV SHOWS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Core Merits -->
+    <section class="py-24 bg-black/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Our Merits</h2>
+                <p class="text-gray-500 uppercase tracking-[0.2em] text-sm">Why global brands choose <span class="serif italic text-3xl text-blue-500">JJ Media</span></p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="glass-card group p-10 rounded-3xl text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-blue-500 group-hover:text-black transition-all duration-500 group-hover:rotate-12">
+                        <i data-lucide="sparkles" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-4">Creative Solutions</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Unique approaches to meet special client needs.</p>
+                </div>
+                <div class="glass-card group p-10 rounded-3xl text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-blue-500 group-hover:text-black transition-all duration-500 group-hover:rotate-12">
+                        <i data-lucide="users" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-4">Progressive Team</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Teamwork based on modern communication disciplines.</p>
+                </div>
+                <div class="glass-card group p-10 rounded-3xl text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-blue-500 group-hover:text-black transition-all duration-500 group-hover:rotate-12">
+                        <i data-lucide="award" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-4">High Motivation</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Professional quality provided by dedicated experts.</p>
+                </div>
+                <div class="glass-card group p-10 rounded-3xl text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-blue-500 group-hover:text-black transition-all duration-500 group-hover:rotate-12">
+                        <i data-lucide="cpu" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-4">Tech Stack</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">FCP, Premiere, Davinci, Avid, Nuke, Maya, Unreal Engine, 3ds Max, Pro Tools, Logic Pro &amp; Nuendo workflows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specializations Section -->
+    <section id="specialties" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold mb-16 text-outline animate-pulse">SPECIALIZATIONS</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- IPTV & TV Network -->
+                <div class="lg:col-span-2 glass-card p-12 rounded-[2.5rem] relative overflow-hidden group/special">
+                    <div class="absolute top-0 right-0 p-8">
+                        <i data-lucide="tv" class="w-24 h-24 text-white/5 group-hover/special:text-blue-500 group-hover/special:scale-110 group-hover/special:rotate-6 transition-all duration-700"></i>
+                    </div>
+                    <span class="inline-block bg-white text-black px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 group-hover/special:scale-110  transition-transform">Global Reach</span>
+                    <h3 class="text-4xl font-bold mb-6">Television Network <br>& IPTV Services</h3>
+                    <p class="text-gray-400 max-w-xl leading-relaxed mb-8 group-hover/special:text-gray-200 transition-colors">
+                        We were the first in India to launch IPTV services in Europe through a joint venture with Thaalam Entertainment in the television network sector. Launched in July 2011, the platform delivered over 200 television channels in multiple languages, including South Asian languages such as Tamil, Malayalam, and Sinhalese, as well as international languages including English, German, French, and Italian.
+                    </p>
+                    <ul class="grid grid-cols-2 gap-4 text-sm text-gray-300">
+                        <li class="flex items-center gap-2 group/item"><i data-lucide="check" class="w-4 h-4 text-green-500 group-hover/item:scale-125 transition-transform"></i> Internet Protocol TV</li>
+                        <li class="flex items-center gap-2 group/item"><i data-lucide="check" class="w-4 h-4 text-green-500 group-hover/item:scale-125 transition-transform"></i> Satellite Rights</li>
+                        <li class="flex items-center gap-2 group/item"><i data-lucide="check" class="w-4 h-4 text-green-500 group-hover/item:scale-125 transition-transform"></i> Multi-language Support</li>
+                        <li class="flex items-center gap-2 group/item"><i data-lucide="check" class="w-4 h-4 text-green-500 group-hover/item:scale-125 transition-transform"></i> No-Weather Interference</li>
+                    </ul>
+                </div>
+
+                <!-- 3D Animation -->
+                <div class="glass-card p-12 rounded-[2.5rem] bg-gradient-to-br from-indigo-900/20 to-transparent group/special">
+                    <i data-lucide="box" class="w-12 h-12 mb-8 text-indigo-400 group-hover/special:scale-110 group-hover/special:rotate-12 transition-transform duration-500"></i>
+                    <h3 class="text-3xl font-bold mb-6">3D Animation</h3>
+                    <p class="text-gray-400 leading-relaxed mb-8 group-hover/special:text-gray-200 transition-colors">
+                        Specializing in character animation, 3D floor plans, architectural walkthroughs, and animated marketing presentations.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="h-1 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-indigo-500 w-[95%] group-hover/special:w-full transition-all duration-1000"></div>
+                        </div>
+                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Precision Excellence</p>
+                    </div>
+                </div>
+
+                <!-- Satellite Services -->
+                <div class="glass-card p-12 rounded-[2.5rem] bg-gradient-to-br from-gray-800 to-transparent group/special">
+                    <i data-lucide="satellite" class="w-12 h-12 mb-8 text-gray-300 group-hover/special:text-blue-500 group-hover/special:translate-y-[-10px] transition-transform duration-500"></i>
+                    <h3 class="text-3xl font-bold mb-6">Satellite Services</h3>
+                    <p class="text-gray-400 leading-relaxed group-hover/special:text-gray-200 transition-colors">
+                        Full rights management for television, radio, DTH, and internet distribution.
+                    </p>
+                </div>
+
+                <!-- 3D Cinema -->
+                <div class="lg:col-span-2 glass-card p-12 rounded-[2.5rem] border border-white/10 flex flex-col md:flex-row gap-12 items-center group/special">
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-bold mb-4 italic serif uppercase group-hover/special:text-blue-500 group-hover/special:tracking-wider transition-all duration-500">The 3D Movement</h3>
+                        <p class="text-gray-400 leading-relaxed group-hover/special:text-gray-200 transition-colors">
+                            Since 2010, JJ Media has been at the forefront of the 3D cinema rise, enhancing audience engagement through innovative depth and visual enhancement tools.
+                        </p>
+                    </div>
+                    <div class="w-48 h-48 bg-white/5 rounded-full flex items-center justify-center border border-white/10 group-hover/special:bg-blue-500 group-hover/special:text-black transition-all duration-700 group-hover:scale-110 group-hover:rotate-[360deg]">
+                        <span class="text-5xl font-black italic">3D</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-20 text-center group">
+                <h2 class="text-5xl font-bold mb-4 group-hover:tracking-widest hover:text-blue-500 transition-all duration-700">Our Portfolio</h2>
+                <div class="h-1 w-24 bg-white mx-auto group-hover:w-48 transition-all duration-700"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Ad Clients -->
+                <div class="space-y-8 glass-card p-8 rounded-3xl border-0 bg-white/[0.01]">
+                    <div class="flex items-center gap-4 border-b border-white/10 pb-4 group">
+                        <i data-lucide="megaphone" class="w-6 h-6  group-hover:text-blue-500 group-hover:rotate-12 transition-transform"></i>
+                        <h3 class="text-2xl font-bold group-hover:text-blue-500">Featured Clients</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="portfolio-item cursor-default">Silver Palace, Madurai</li>
+                        <li class="portfolio-item cursor-default">MGR University</li>
+                        <li class="portfolio-item cursor-default">Sri Rajiv Gandhi College</li>
+                        <li class="portfolio-item cursor-default">Saveetha University</li>
+                        <li class="portfolio-item cursor-default">American Tourister</li>
+                        <li class="portfolio-item cursor-default">Amethyst International</li>
+                    </ul>
+                </div>
+
+                <!-- Movies & Dubbing -->
+                <div class="space-y-8 glass-card p-8 rounded-3xl border-0 bg-white/[0.01]">
+                    <div class="flex items-center gap-4 border-b border-white/10 pb-4 group">
+                        <i data-lucide="film" class="w-6 h-6 group-hover:text-blue-500 group-hover:rotate-12 transition-transform"></i>
+                        <h3 class="text-2xl font-bold group-hover:text-blue-500">Cinema Projects</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="portfolio-item cursor-default">Afsaras Movie</li>
+                        <li class="portfolio-item cursor-default">Karmayogie (Malayalam)</li>
+                        <li class="portfolio-item cursor-default">Dharishunilam (English to Tamil)</li>
+                        <li class="portfolio-item cursor-default">Azhagan Azhagi</li>
+                        <li class="portfolio-item cursor-default">Sol (Tamil)</li>
+                        <li class="portfolio-item cursor-default">Corporate Docs (150+ Titles)</li>
+                    </ul>
+                </div>
+
+                <!-- TV Serials -->
+                <div class="space-y-8 glass-card p-8 rounded-3xl border-0 bg-white/[0.01]">
+                    <div class="flex items-center gap-4 border-b border-white/10 pb-4 group">
+                        <i data-lucide="monitor" class="w-6 h-6 group-hover:text-blue-500 group-hover:rotate-12 transition-transform"></i>
+                        <h3 class="text-2xl font-bold group-hover:text-blue-500">TV Serials</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="portfolio-item cursor-default">Isai Amutham (Kalaingar TV)</li>
+                        <li class="portfolio-item cursor-default">Engaveetymahalakshmi (Zee Tamil)</li>
+                        <li class="portfolio-item cursor-default">Karpoora Deepam (Jaya TV)</li>
+                        <li class="portfolio-item cursor-default">Jai Mahasakthi (Captain TV)</li>
+                        <li class="portfolio-item cursor-default">SIMAA Awards (Sun TV)</li>
+                        <li class="portfolio-item cursor-default">Mudivilla Arambam (Vendar TV)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer id="contact" class="bg-black pt-20 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                 <!-- Brand -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                       <a href="index.htm" class="flex-shrink-0 flex items-center gap-3">
+                    <img src="img/poster.png" alt="JJ Media Logo" style="scale: auto" class="w-10 h-10 object-contain rounded">
+                    <span class="font-bold text-2xl tracking-widest text-blue-500">JJ MEDIA</span>
+                </a>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
+                        We bring imagination to life through high-end production and post-production services. Based in Chennai, working globally.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/profile.php?id=61577493538528" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-black transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jjmediaindia/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-500 hover:text-black transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@yazhinitv4066" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-500 hover:text-black transition-colors">
+                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-blue-500">Explore</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="index.htm" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="work.html" class="hover:text-white transition-colors">Our Work</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-blue-500">Contact Us</h3>
+                    <div class="space-y-4 text-gray-400">
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="map-pin" class="w-5 h-5 mt-1 shrink-0 text-white"></i>
+                            <p>Riaz Garden, 9th floor<br>29/12, Tirumurthy Nagar, Nungambakkam,<br>Chennai, TN 600034</p>
+                        </div>
+                        <div class="flex gap-3 items-center">
+                            <i data-lucide="mail" class="w-5 h-5 shrink-0 text-white"></i>
+                            <a href="mailto:jjmediaindia@gmail.com" class="hover:text-white transition-colors">jjmediaindia@gmail.com</a>
+                        </div>
+                        <div class="flex gap-3 items-center">
+                            <i data-lucide="phone" class="w-5 h-5 shrink-0 text-white"></i>
+                            <a href="tel:+916380988958" class="hover:text-white transition-colors">+91 6380 988 958</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-900 py-8 text-center text-gray-600 text-sm">
+                <p>&copy; 2026 JJ Media. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
