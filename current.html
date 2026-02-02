@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Projects | JJ Media</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #121212; color: #ffffff; }
+        .serif { font-family: 'Playfair Display', serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+        
+        .cursor-glow {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;
+            background: radial-gradient(1000px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 0, 255, 0.1), transparent 40%);
+            mix-blend-mode: screen;
+        }
+
+        /* Enhanced Scaling Modal Styles */
+        #video-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+        }
+
+        #video-modal.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            transform: scale(0.85);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 80px -12px rgba(0, 0, 0, 0.8), 0 0 50px rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2rem;
+            position: relative;
+            overflow: visible;
+        }
+
+        #video-modal.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        #video-modal.closing .modal-content {
+            transform: scale(0.85);
+            opacity: 0;
+        }
+        
+        #modal-video {
+            border-radius: 2rem;
+            background: #000;
+            display: block;
+        }
+
+        #close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 110;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(8px);
+        }
+
+        #close-modal:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #000000;
+            transform: rotate(90deg) scale(1.1);
+            border-color: #ffffff;
+        }
+
+        .status-badge {
+            @apply px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+    <div class="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3">
+                    <img src="img/poster.png" alt="JJ Media Logo" class="w-10 h-10 object-contain rounded" onerror="this.src='https://via.placeholder.com/40'">
+                    <span class="font-bold text-xl tracking-widest text-blue-500">JJ MEDIA</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="index.html" class="text-white px-3 py-2 text-sm font-medium hover:text-blue-500 transition-all">Home</a>
+                        <a href="services.html" class="text-white px-3 py-2 text-sm font-medium hover:text-blue-500 transition-all">Services</a>
+                        <a href="portfolio.html" class="text-white px-3 py-2 text-sm font-medium hover:text-blue-500 transition-all">Portfolio</a>
+                        <a href="current.html" class="text-blue-500 border-b-2 border-blue-500 px-3 py-2 text-sm font-medium">Current Projects</a>
+                        <a href="work.html" class="text-white px-3 py-2 text-sm font-medium hover:text-blue-500 transition-all">Work</a>
+                        <a href="about.html" class="text-white px-3 py-2 text-sm font-medium hover:text-blue-500 transition-all">About</a>
+                        <a href="contact.html" class="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-blue-500 transition-all">Contact Us</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-40 pb-12 px-4 text-center">
+        <span class="text-blue-500 font-bold tracking-[0.3em] uppercase text-sm mb-4 block">On the Horizon</span>
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-8 serif italic">Current Projects</h1>
+        <p class="max-w-2xl mx-auto text-gray-400 text-lg">
+            A glimpse into the stories we are currently shaping. From restoration masterpieces to cutting-edge digital productions.
+        </p>
+        
+        <!-- Filters -->
+        <div class="flex flex-wrap justify-center gap-3 mt-12">
+            <button class="filter-btn active px-8 py-3 rounded-full border border-blue-500 bg-blue-500 text-white font-bold transition-all text-sm" data-filter="all">All Phases</button>
+            <button class="filter-btn px-8 py-3 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:border-blue-500 hover:text-white transition-all text-sm" data-filter="post">Post-Production</button>
+            <button class="filter-btn px-8 py-3 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:border-blue-500 hover:text-white transition-all text-sm" data-filter="restoration">Restoration</button>
+            <button class="filter-btn px-8 py-3 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:border-blue-500 hover:text-white transition-all text-sm" data-filter="vfx">VFX &amp; Grading</button>
+        </div>
+    </header>
+
+    <!-- Gallery Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery">
+            
+           <!-- Ongoing Project 2 (Image Based) -->
+            <div class="item post group relative aspect-[4/5] bg-[#1a1a1a] overflow-hidden cursor-pointer rounded-2xl image-trigger" data-image="img/nenjil_maamazhai.png">
+                <img src="img/nenjil_maamazhai.png" alt="Restoration" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-8 flex flex-col justify-end">
+                    <div class="mb-4">
+                        <span class="bg-orange-500 text-white status-badge">Post Production</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Nenjil Maamazhai</h3>
+                    <p class="text-gray-400 text-sm">Transforming raw visuals into a polished cinematic experience through editing, VFX, color grading, sound design, and final mastering.</p>
+                </div>
+            </div>
+
+            <!-- Ongoing Project 2 (Image Based) -->
+            <div class="item restoration group relative aspect-[4/5] bg-[#1a1a1a] overflow-hidden cursor-pointer rounded-2xl image-trigger" data-image="img/enthangaikalyani.png">
+                <img src="img/enthangaikalyani.png" alt="Restoration" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-8 flex flex-col justify-end">
+                    <div class="mb-4">
+                        <span class="bg-orange-500 text-white status-badge">Digital Restoration</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">En Thangai Kalyani</h3>
+                    <p class="text-gray-400 text-sm">Painstakingly restoring 35mm prints to 4K Dolby Vision. Preserving the heritage of cinema.</p>
+                </div>
+            </div>
+            
+             <!-- Ongoing Project 4 (Image Based) -->
+            <div class="item restoration group relative aspect-[4/5] bg-[#1a1a1a] overflow-hidden cursor-pointer rounded-2xl image-trigger" data-image="img/thulluvadhoilamai.png">
+                <img src="img/thulluvadhoilamai.png" alt="Restoration" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-8 flex flex-col justify-end">
+                    <div class="mb-4">
+                        <span class="bg-orange-500 text-white status-badge">Digital Restoration</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Thulluvadho Ilamai</h3>
+                    <p class="text-gray-400 text-sm">Painstakingly restoring 35mm prints to 4K Dolby Vision. Preserving the heritage of cinema.</p>
+                </div>
+            </div>
+            
+            <!-- Ongoing Project 5 (Image Based) -->
+            <div class="item restoration group relative aspect-[4/5] bg-[#1a1a1a] overflow-hidden cursor-pointer rounded-2xl image-trigger" data-image="img/kadhalkonden.png">
+                <img src="img/kadhalkonden.jpg" alt="Restoration" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-8 flex flex-col justify-end">
+                    <div class="mb-4">
+                        <span class="bg-orange-500 text-white status-badge">Digital Restoration</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Kadhal Konden</h3>
+                    <p class="text-gray-400 text-sm">Painstakingly restoring 35mm prints to 4K Dolby Vision. Preserving the heritage of cinema.</p>
+                </div>
+            </div>
+
+
+            <!-- Ongoing Project 5 (Image Based) -->
+            <div class="item vfx group relative aspect-[4/5] bg-[#1a1a1a] overflow-hidden cursor-pointer rounded-2xl image-trigger" data-image="img/kadhalkonden.png">
+                <img src="img/kadhalkonden.jpg" alt="Restoration" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-8 flex flex-col justify-end">
+                    <div class="mb-4">
+                        <span class="bg-orange-500 text-white status-badge">Digital Restoration</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Kadhal Konden</h3>
+                    <p class="text-gray-400 text-sm">Painstakingly restoring 35mm prints to 4K Dolby Vision. Preserving the heritage of cinema.</p>
+                </div>
+            </div>
+
+            <!-- Placeholder for more -->
+            <div class="item all group relative aspect-[4/5] bg-[#1a1a1a] overflow-hidden rounded-2xl border-2 border-dashed border-white/5 flex flex-col items-center justify-center p-12 text-center">
+                <div class="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center mb-6">
+                    <i data-lucide="plus" class="text-blue-500 w-8 h-8"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Your Vision Next?</h3>
+                <p class="text-gray-500 text-sm">We have 4 more projects currently under wraps. Contact us to start your post-production journey.</p>
+                <a href="contact.html" class="mt-6 text-blue-500 font-bold hover:underline text-sm uppercase tracking-widest">Get in touch</a>
+            </div>
+            
+            
+        </div>
+    </main>
+
+    <!-- Video Modal -->
+    <div id="video-modal">
+        <div class="modal-content w-full max-w-6xl aspect-video bg-black rounded-[2rem]">
+            <button id="close-modal">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <video id="modal-video" class="w-full h-full cursor-pointer" autoplay loop playsinline controls>
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+  <!-- Footer -->
+    <footer id="contact" class="bg-black pt-20 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                 <!-- Brand -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                       <a href="index.htm" class="flex-shrink-0 flex items-center gap-3">
+                    <img src="img/poster.png" alt="JJ Media Logo" style="scale: auto" class="w-10 h-10 object-contain rounded">
+                    <span class="font-bold text-2xl tracking-widest text-blue-500">JJ MEDIA</span>
+                </a>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
+                        We bring imagination to life through high-end production and post-production services. Based in Chennai, working globally.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/profile.php?id=61577493538528" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 hover:text-black transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jjmediaindia/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-500 hover:text-black transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@yazhinitv4066" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-500 hover:text-black transition-colors">
+                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-blue-500">Explore</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="work.html" class="hover:text-white transition-colors">Our Work</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6 text-blue-500">Contact Us</h3>
+                    <div class="space-y-4 text-gray-400">
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="map-pin" class="w-5 h-5 mt-1 shrink-0 text-white"></i>
+                            <p>Riaz Garden, 9th floor<br>29/12, Tirumurthy Nagar, Nungambakkam,<br>Chennai, TN 600034</p>
+                        </div>
+                        <div class="flex gap-3 items-center">
+                            <i data-lucide="mail" class="w-5 h-5 shrink-0 text-white"></i>
+                            <a href="mailto:jjmediaindia@gmail.com" class="hover:text-white transition-colors">jjmediaindia@gmail.com</a>
+                        </div>
+                        <div class="flex gap-3 items-center">
+                            <i data-lucide="phone" class="w-5 h-5 shrink-0 text-white"></i>
+                            <a href="tel:+916380988958" class="hover:text-white transition-colors">+91 6380 988 958</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-900 py-8 text-center text-gray-600 text-sm">
+                <p>&copy; 2026 JJ Media. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        lucide.createIcons();
+        
+        // Mouse Glow Effect
+        const glow = document.querySelector('.cursor-glow');
+        window.addEventListener('mousemove', (e) => {
+            glow.style.setProperty('--mouse-x', `${e.clientX}px`);
+            glow.style.setProperty('--mouse-y', `${e.clientY}px`);
+        });
+
+        // Filter Functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // UI Toggle
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-blue-500', 'text-white', 'border-blue-500');
+                    b.classList.add('border-white/10', 'bg-white/5', 'text-gray-300');
+                });
+                btn.classList.add('active', 'bg-blue-500', 'text-white', 'border-blue-500');
+                btn.classList.remove('border-white/10', 'bg-white/5', 'text-gray-300');
+
+                const filter = btn.getAttribute('data-filter');
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.style.opacity = '1', 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+
+        // Video Modal Logic
+        const modal = document.getElementById('video-modal');
+        const modalVideo = document.getElementById('modal-video');
+        const closeBtn = document.getElementById('close-modal');
+        const videoTriggers = document.querySelectorAll('.video-trigger');
+
+        videoTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const videoSrc = trigger.getAttribute('data-video');
+                if (videoSrc) {
+                    modalVideo.src = videoSrc;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; 
+                    modalVideo.play();
+                }
+            });
+        });
+
+        const closeModal = () => {
+            modal.classList.add('closing');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modalVideo.pause();
+                modalVideo.src = "";
+                modal.classList.remove('closing');
+                document.body.style.overflow = 'auto';
+            }, 400); 
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        });
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'fixed inset-0 bg-black z-[60] flex flex-col items-center justify-center space-y-8 text-2xl font-bold hidden';
+        mobileMenu.innerHTML = `
+            <button id="close-mobile" class="absolute top-8 right-8"><i data-lucide="x" class="w-10 h-10"></i></button>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="work.html">Work</a>
+            <a href="current.html" class="text-blue-500">Current Projects</a>
+            <a href="contact.html">Contact</a>
+        `;
+        document.body.appendChild(mobileMenu);
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            lucide.createIcons();
+        });
+
+        document.getElementById('close-mobile')?.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
