@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="yandex-verification" content="f73a2f55422d41cc" />
     <title>JJ Media | Audiovisual Production House - Chennai</title>
     <meta name="description" content="JJ Media is a premier audiovisual production house in Chennai offering DI, Editing, Sound, Dubbing, Film Restoration, VFX, and CGI services.">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -195,6 +194,7 @@
                         </div>
 
                         <a href="portfolio.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium transition-transform transform hover:scale-[1.02]">Portfolio</a>
+                        <a href="current.html" class="text-blue-500 border-b-2 border-blue-500 px-3 py-2 text-sm font-medium">Current Projects</a>
                         <a href="work.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium transition-transform transform hover:scale-[1.02]">Work</a>
                         <a href="about.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium transition-transform transform hover:scale-[1.02]">About</a>
                         <a href="contact.html" class="bg-white text-blue-500 px-6 py-2 rounded-full text-sm font-bold hover:text-white transition-colors hover:bg-blue-500 transition-transform transform hover:scale-[1.02]">Contact Us</a>
@@ -422,16 +422,77 @@
         .animate-marquee { animation: marquee 20s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     </style>
+    
+    <section id="highlights" class="relative py-24 bg-black overflow-hidden min-h-screen flex flex-col justify-center">
+    
+    <!-- Background Breathing Glows -->
+    <!-- Teal/Cyan Glow (Left) -->
+    <div class="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-teal-600/20 rounded-full blur-[120px] animate-breathe pointer-events-none"></div>
+    <!-- Amber/Orange Glow (Right) -->
+    <div class="absolute bottom-1/4 -right-20 w-[600px] h-[600px] bg-orange-600/15 rounded-full blur-[150px] animate-breathe pointer-events-none" style="animation-delay: -5s;"></div>
+    <!-- Central Soft Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-teal-900/10 blur-[120px] pointer-events-none"></div>
+
+    <!-- Header Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-2 text-blue-500">Upcoming Projects</h2>
+        <p class="text-gray-400 text-lg font-light">A look into what’s next.</p>
+    </div>
+
+    <!-- Movie Posters Grid -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            
+            <!-- Project 1: Superman -->
+            <div class="poster-card group relative aspect-[2/3] rounded-2xl overflow-hidden border border-white/5 bg-zinc-900 transition-all duration-500">
+                <img 
+                    src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&q=80&w=800" 
+                    alt="Superman" 
+                    class="w-full h-full object-cover transition-transform duration-700 ease-out"
+                >
+                <div class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="text-2xl font-bold mb-1 uppercase tracking-tighter text-white">Mathuraathipathi</h3>
+                    <p class="text-xs text-gray-300 font-light">When Krishna arrives, tyranny ends.</p>
+                </div>
+            </div>
+
+            <!-- Project 2: Wednesday -->
+            <div class="poster-card group relative aspect-[2/3] rounded-2xl overflow-hidden border border-white/5 bg-zinc-900 transition-all duration-500">
+                <img 
+                    src="https://images.unsplash.com/photo-1611419010196-a360856ff42f?auto=format&fit=crop&q=80&w=800" 
+                    alt="Wednesday" 
+                    class="w-full h-full object-cover transition-transform duration-700 ease-out"
+                >
+                <div class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="text-2xl font-bold mb-1 uppercase tracking-tighter text-white">Wednesday</h3>
+                    <p class="text-xs text-gray-300 font-light">A twisted new mystery from the world of the Addams Family.</p>
+                </div>
+            </div>
+
+           
+
+        </div>
+    </div>
+
+    <!-- Footer Link -->
+    <div class="relative z-10 mt-16 text-center">
+        <a href="Work.html" class="inline-flex items-center gap-2 text-teal-400 font-medium hover:text-teal-300 transition-colors group">
+            View All Films 
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+    </div>
+
+</section>
 
     <!-- NEW: Project Highlights Video Slideshow Section -->
     <section hidden id="highlights" class="py-24 bg-black overflow-hidden border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-blue-500">Cinematic Highlights</h2>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-blue-500">Upcoming Projects</h2>
                     <div class="h-1 w-20 bg-white"></div>
                 </div>
-                <p class="text-gray-400 max-w-md">Our recent breakthroughs in visual storytelling and post-production excellence.</p>
+                <p hidden class="text-gray-400 max-w-md">Our recent breakthroughs in visual storytelling and post-production excellence.</p>
             </div>
         </div>
 
@@ -495,6 +556,8 @@
             </div>
         </div>
     </section>
+    
+    
 
     <!-- Featured Work -->
     <section id="work" class="py-24 bg-[#0a0a0a]">
@@ -533,7 +596,7 @@
                  <!-- Brand -->
                 <div class="space-y-6">
                     <div class="flex items-center gap-3">
-                       <a href="index.html" class="flex-shrink-0 flex items-center gap-3">
+                       <a href="index.htm" class="flex-shrink-0 flex items-center gap-3">
                     <img src="img/poster.png" alt="JJ Media Logo" style="scale: auto" class="w-10 h-10 object-contain rounded">
                     <span class="font-bold text-2xl tracking-widest text-blue-500">JJ MEDIA</span>
                 </a>

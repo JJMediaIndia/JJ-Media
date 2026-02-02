@@ -143,6 +143,7 @@
                         </div>
 
                         <a href="portfolio.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium transition-transform transform hover:scale-[1.02]">Portfolio</a>
+                        <a href="current.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium transition-transform transform hover:scale-[1.02]">Current Projects</a>
                         <a href="work.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium transition-transform transform hover:scale-[1.02]">Work</a>
                         <a href="about.html" class="hover:text-blue-500 transition-colors px-3 py-2 text-sm font-medium transition-transform transform hover:scale-[1.02]">About</a>
                         <a href="contact.html" class="bg-white text-blue-500 px-6 py-2 rounded-full text-sm font-bold hover:text-white transition-colors hover:bg-blue-500 transition-transform transform hover:scale-[1.02]">Contact Us</a>
@@ -189,6 +190,7 @@
             <button class="filter-btn px-6 py-2 rounded-full border border-blue-100 bg-white/0 text-blue-500 hover:text-white hover:bg-blue-500 transition-all" data-filter="commercial">Black &amp; White</button>
             <button class="filter-btn px-6 py-2 rounded-full border border-blue-100 bg-white/0 text-blue-500 hover:text-white hover:bg-blue-500 transition-all" data-filter="cinema">Movies</button>
             <button class="filter-btn px-6 py-2 rounded-full border border-blue-100 bg-white/0 text-blue-500 hover:text-white hover:bg-blue-500 transition-all" data-filter="TV">TV Shows</button>
+            <button class="filter-btn px-6 py-2 rounded-full border border-blue-100 bg-white/0 text-blue-500 hover:text-white hover:bg-blue-500 transition-all" data-filter="Upcoming">Upcoming</button>
         </div>
     </div>
 
@@ -279,7 +281,7 @@
                  </video>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
                     <span class="text-xs font-bold text-pink-500 uppercase mb-1">Black and White to Colour</span>
-                    <h3 class="text-xl font-bold text-white">Tech Future</h3>
+                    <h3 class="text-xl font-bold text-white">The Broadway Melody - 1929</h3>
                 </div>
                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-2xl"><i data-lucide="play" class="fill-black text-black ml-1 w-5 h-5"></i></div>
@@ -315,6 +317,72 @@
                     <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-2xl"><i data-lucide="play" class="fill-black text-black ml-1 w-5 h-5"></i></div>
                 </div>
             </div>
+            
+            <!-- Project 9 -->
+             <div class="item cinema group relative aspect-video bg-gray-800 overflow-hidden cursor-pointer rounded-lg video-trigger" data-video="vid/mp4/sarapanjaram.mp4">
+                 <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                    <source src="vid/mp4/sarapanjaram.mp4" type="video/mp4">
+                 <source src="vid/webm/sarapanjaram.webm" type="video/webm">
+                 </video>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-6">
+                    <span class="text-xs font-bold text-pink-500 uppercase mb-1">Film to Digital Restoration</span>
+                    <h3 class="text-xl font-bold text-white">Sarapancharam - Malayalam</h3>
+                </div>
+                 <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-2xl"><i data-lucide="play" class="fill-black text-black ml-1 w-5 h-5"></i></div>
+                </div>
+            </div>
+            
+             <!-- Project 1 -->
+            <div class="item cinema group relative bg-gray-800 overflow-hidden cursor-pointer rounded-lg image-trigger" data-image="img/venky.png">
+                <!-- Background Image -->
+                <img 
+                    src="img/venky.png" 
+                    alt="Venky 2004" 
+                    class="w-full h-auto min-h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onerror="this.style.display='none'; this.parentElement.classList.add('bg-gray-700')"
+                >
+
+                <!-- Content Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                    <span class="text-xs font-bold text-orange-500 uppercase mb-1">Film to Digital Restoration</span>
+                    <h3 class="text-xl font-bold text-white">Venky - Telugu (2004)</h3>
+                </div>
+            </div>
+                
+                 <!-- Project 1 -->
+            <div class="item cinema group relative bg-gray-800 overflow-hidden cursor-pointer rounded-lg image-trigger" data-image="img/ghajini.jpg">
+                <!-- Background Image -->
+                <img 
+                    src="img/Ghajini.jpg" 
+                    alt="Ghajini" 
+                    class="w-full h-auto min-h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onerror="this.style.display='none'; this.parentElement.classList.add('bg-gray-700')"
+                >
+
+                <!-- Content Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                    <span class="text-xs font-bold text-orange-500 uppercase mb-1">Film to Digital Restoration</span>
+                    <h3 class="text-xl font-bold text-white">Ghajini</h3>
+            </div>
+            </div>
+            
+             <!-- Project 1 -->
+            <div class="item cinema group relative bg-gray-800 overflow-hidden cursor-pointer rounded-lg image-trigger" data-image="img/avanaazhi.png">
+                <!-- Background Image -->
+                <img 
+                    src="img/avanazhi.png" 
+                    alt="avanaazhi" 
+                    class="w-full h-auto min-h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onerror="this.style.display='none'; this.parentElement.classList.add('bg-gray-700')"
+                >
+
+                <!-- Content Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                    <span class="text-xs font-bold text-orange-500 uppercase mb-1">Film to Digital Restoration</span>
+                    <h3 class="text-xl font-bold text-white">Avanaazhi</h3>
+            </div>
+            </div>
         </div>
     </main>
 
@@ -339,7 +407,7 @@
                  <!-- Brand -->
                 <div class="space-y-6">
                     <div class="flex items-center gap-3">
-                       <a href="index.html" class="flex-shrink-0 flex items-center gap-3">
+                       <a href="index.htm" class="flex-shrink-0 flex items-center gap-3">
                             <img src="img/poster.png" alt="JJ Media Logo" class="w-10 h-10 object-contain rounded" onerror="this.src='https://via.placeholder.com/40'">
                             <span class="font-bold text-2xl tracking-widest text-blue-500">JJ MEDIA</span>
                         </a>
@@ -356,7 +424,7 @@
                 <div>
                     <h3 class="text-lg font-bold mb-6 text-blue-500">Explore</h3>
                     <ul class="space-y-4 text-gray-400">
-                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="index.htm" class="hover:text-white transition-colors">Home</a></li>
                         <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
                         <li><a href="work.html" class="hover:text-white transition-colors">Our Work</a></li>
                         <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
